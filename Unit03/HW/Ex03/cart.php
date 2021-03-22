@@ -1,21 +1,17 @@
 <?php 
 	session_start();
-
-	$dataArr = $_SESSION['product'];
-
-	$_SESSION['cart'] = array(
-		for ($i=0; $i < count($dataArr); $i++) { 
-			'id' = $dataArr[$i]['id'];
-			'name' = $dataArr[$i]['name'];
-			// 'int' = $arr[$i]['int'];
-			'price' = $dataArr[$i]['price'];
-			// 'sum' = $arr[$i]['sum'];
-			// 'date' = $arr[$i]['date'];
-		}
-	);
+	if (!isset($_SESSION['cart'])) {
+		$_SESSION['cart'] = array();
+	}
+	$dataArr = $_SESSION['cart'];
+	$t=0;
+	$j=0;
+	foreach ($dataArr as $value) {
+		$j++;
+		$t += $value['sum'];
+	}
  ?>
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
@@ -46,22 +42,25 @@
 		  </thead>
 		  <tbody>
 		    <?php
-		    	for ($i=0; $i < count($dataArr); $i++) { 
-		    	
+		    	$k=0;
+		    	foreach ($dataArr as $value) {
+		    	 	$k++; 
 		    ?>
 		     	<tr>
-		     		<td><?php echo $dataArr[$i]['id']; ?></td>
-		     		<td><?php echo $dataArr[$i]['name']; ?></td>
-		     		<td><?php echo $dataArr[$i]['price']; ?></td>
+		     		<td><?php echo $value['id']; ?></td>
+		     		<td><?php echo $value['name']; ?></td>
+		     		<td><?php echo $value['amount']; ?></td>
+		     		<td><?php echo $value['price']; ?></td>
+		     		<td><?php echo $value['sum']; ?></td>
+		     		<td><?php echo $value['date']; ?></td>
 		     		<td>
-		     			<a href="cart.php">Thêm vào giỏ hàng</a>
+		     			<a href="delete.php?id=<?php echo $value['id']; ?>">Xóa khỏi giỏ hàng</a>
 		     		</td>	
 		     	</tr>
 		     <?php } ?>
 		     <tr>
-		     	<th colspan="4">Thành tiền</th>
-		     	<th></th>
-		     	<th colspan="2"></th>
+		     	<th colspan="4" class="text-center">Tổng Tiền</th>
+		     	<th colspan="3"><?php echo $t; ?></th>
 		     </tr>
 		  </tbody>
 		</table>

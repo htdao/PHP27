@@ -14,5 +14,6 @@
 	}else{
 		setcookie('check_failes',1,time()+5);
 		header('Location: index.php');
+		
 	}
  ?>

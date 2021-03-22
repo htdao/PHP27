@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	if (isset($_SESSION['product'])) {
+	if (!isset($_SESSION['product'])) {
 		$_SESSION['product'] = array();
 	}
 		$dataArr = array();
@@ -16,10 +16,7 @@
 			$dataArr[3]['id']="SP04";
 			$dataArr[3]['name']="Áo";
 			$dataArr[3]['price']=50000;
-	$_SESSION['product'] = $dataArr;
-	// echo "<pre>";
-	// 	print_r($_SESSION['product']);
-	// echo "</pre>";
+	$_SESSION['product'] = $dataArr;	
  ?>
  <!DOCTYPE html>
 <html>
@@ -35,7 +32,7 @@
 		  <thead>
 		  	<tr>
 		      <th colspan="3" class="text-center">DANH SÁCH SẢN PHẨM</th>
-		      <td><a href="cart.php">Xem giỏ hàng</a></td>
+		      <td><a href="cart.php?id=<?php echo "view"; ?>">Xem giỏ hàng</a></td>
 		    </tr>
 		    <tr>
 		      <th scope="col">ID</th>
@@ -54,7 +51,7 @@
 		     		<td><?php echo $dataArr[$i]['name']; ?></td>
 		     		<td><?php echo $dataArr[$i]['price']; ?></td>
 		     		<td>
-		     			<a href="cart.php?id=<?php echo $dataArr[$i]['id']; ?>">Thêm vào giỏ hàng</a>
+		     			<a href="cartProcess.php?id=<?php echo $dataArr[$i]['id']; ?>">Thêm vào giỏ hàng</a>
 		     		</td>	
 		     	</tr>
 		     <?php } ?>
