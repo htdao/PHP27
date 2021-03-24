@@ -1,4 +1,6 @@
 <?php 
 	session_start();
-	unset($_SESSION['file']['file_name']);
+	$id = $_GET['id'];
+	unset($_SESSION['documents'][$id]); 
+	header("Location: index.php");
  ?>

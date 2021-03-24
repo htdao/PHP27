@@ -2,11 +2,11 @@
 	require('data.php');
 	require('upLoadProcess.php');
 	session_start();
-	if (!isset($_SESSION["name"]["file_name"])) {
-		$_["name"]["file_name"] = $data;
+	if (!isset($_SESSION['documents'][])) {
+		$_SESSION['documents'][] = $data;
 	}
 	// array_push($_SESSION["name"]["file_name"], var $file);
-	$arr = $_SESSION["name"]["file_name"];
+	$documents = $_SESSION['documents'][]
 	// echo "<pre>";
 	// 	print_r($arr);
 	// echo "</pre>";
@@ -34,22 +34,14 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		  	<?php 
-		  		$i=0;
-		  		foreach ($arr as $value) {
-			  		$i++;
-			?>
-		     	<tr>
-		     		<td><?php echo $i; ?></td>
-		     		<td><?php echo $value['name']; ?></td>
-		     		<td>
-		     			<a href="download.php?code=<?php echo $arr['0']; ?>" class="btn btn-success">Download</a>
-		     		</td>	
-		     		<td>
-		     			<a href="remove.php?code=<?php echo $arr['0']; ?>" class="btn btn-danger">Remove</a>
-		     		</td>	
-		     	</tr>
-		     <?php } ?>
+		  	 <?php foreach($documents as $key=> $document){ ?>
+            <tr>
+                <td><?= $key ?></td>
+                <td><?= $document['name'] ?></td>
+                <td><a class="btn btn-primary" href="documents/<?= $document['file_name'] ?>">Download</a></td>
+                <td><a class="btn btn-danger" href="remove.php?id=<?=$key?>">Remove</a></td>
+            </tr>
+        <?php } ?>
 		  </tbody>
 		</table>
 	</div>
