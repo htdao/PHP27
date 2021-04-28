@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="public/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="public/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="shortcut icon" href="public/images/favicon.ico">
+    <link rel="shortcut icon" href="public/images/logo.png">
   </head>
   <body>
     <div class="container-scroller">
@@ -19,7 +19,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <img src="public/images/logo.svg">
+                  <img src="public/images/logo.png">
                 </div>
                 <h3 class="text-center">ĐĂNG NHẬP</h3>
                 <!-- <h6 class="font-weight-light">Sign in to continue.</h6> -->
